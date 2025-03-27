@@ -1,0 +1,33 @@
+node_groups:
+  - name: everywhere
+    nodes_count: 50 # amount of nodes to be found
+    free_cpu: 4 # number of logical cores
+    free_mru: 16 # amount of memory in GB
+    free_ssd: 200 # amount of ssd storage in GB
+    free_hdd: 0 # amount of hdd storage in GB
+    dedicated: false # are nodes dedicated
+    public_ip4: false # should the nodes have free ip v4
+    public_ip6: false # should the nodes have free ip v6
+    certified: false # should the nodes be certified(if false the nodes could be certified of diy) 
+    # region: americas # region could be the name of the continents the nodes are located in (africa, americas, antarctic, antarctic ocean, asia, europe, oceania, polar)
+
+vms:
+  - name: everywhere_vms
+    vms_count: 100 # amount of vms with the same configurations
+    node_group: everywhere # the name of the predefined group of nodes
+    cpu: 4 # number of logical cores
+    mem: 8 # amount of  memory in GB
+    public_ip4: false
+    public_ip6: false
+    ygg_ip: true
+    mycelium_ip: true
+    flist: "https://hub.grid.tf/tf-official-apps/threefoldtech-ubuntu-22.04.flist"
+    entry_point: '/sbin/zinit init'
+    root_size: 100 # root size in GB, 0 is the default
+    ssh_key: my_key # the name of the predefined ssh key, will be defined below
+
+ssh_keys: # map of ssh keys with key=name and value=the actual ssh key
+  my_key: "ssh-key ..."
+
+mnemonic: write your words here # mnemonic of the user
+network: main # eg: main, test, qa, dev
